@@ -10,10 +10,10 @@ The triple-quote must appear on its own line
 #>
 # Code cells are denoted by "#>" at the beginning of a line
 #
-print 'Hello, world'
+print('Hello, world')
 
 #>
-print 'O hai, hoomans'
+print('O hai, hoomans')
 
 '''
 ## Subsection
@@ -21,5 +21,5 @@ I can $\LaTeX$
 '''
 
 
-print 'bar'
+print('bar')
 
