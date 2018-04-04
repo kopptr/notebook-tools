@@ -20,6 +20,9 @@ print('O hai, hoomans')
 I can $\LaTeX$
 '''
 
+'''
+## sequential markdown cells are cool
+'''
 
+#>
 print('bar')
-
