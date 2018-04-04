@@ -40,6 +40,9 @@ with open(pyfile, 'r') as f:
         else:
             print('BAD STATE')
             sys.exit()
+    if state == 'code' and cell_str != '':
+        cells.append(nbf.new_code_cell(cell_str))
+
 
 nb = nbf.new_notebook()
 nb['cells'] = cells
