@@ -16,6 +16,14 @@ print('Hello, world')
 print('O hai, hoomans')
 
 '''
+## Notebook-only cells
+Code cells that start with "#nb>" will not be executed in the script form of the code
+'''
+
+#nb>
+#print('Does not get printed in the script')
+
+'''
 ## Subsection
 I can $\LaTeX$
 '''
@@ -26,3 +34,4 @@ I can $\LaTeX$
 
 #>
 print('bar')
+

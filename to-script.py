@@ -13,8 +13,11 @@ with open('generated_script.py', 'w') as f:
         if cell['cell_type'] == 'markdown':
             f.write("'''\n")
             f.write(''.join(cell['source']))
-            f.write("'''\n\n")
+            f.write("\n'''\n\n")
         elif cell['cell_type'] == 'code':
-            f.write('#>\n')
-            f.write(''.join(cell['source']))
+            if cell['source'].startswith('#nb>'):
+                f.write(cell['source'].replace('\n', '\n#') + '\n\n')
+            else:
+                f.write('#>\n')
+                f.write(''.join(cell['source']) + '\n\n')
 
