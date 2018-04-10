@@ -23,6 +23,8 @@ with open(args.target, 'w') as f:
         elif cell['cell_type'] == 'code':
             if cell['source'].startswith('#nb>'):
                 f.write(cell['source'].replace('\n', '\n#') + '\n\n')
+            elif cell['source'].startswith('#py>'):
+                f.write('#py>\n' + '\n'.join([x[1:] for x in cell['source'].split('\n')[1:]]) + '\n\n')
             else:
                 f.write('#>\n')
                 f.write(''.join(cell['source']) + '\n\n')

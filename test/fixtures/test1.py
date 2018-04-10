@@ -28,6 +28,9 @@ Code cells that start with "#nb>" will not be executed in the script form of the
 I can $\LaTeX$
 '''
 
+#py>
+print('Does not get printed in the notebook')
+
 '''
 ## sequential markdown cells are cool
 '''

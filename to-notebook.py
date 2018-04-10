@@ -25,6 +25,9 @@ with open(args.source, 'r') as f:
             elif line.startswith('#nb>'):
                 state = 'nbonlycode'
                 cell_str = '#nb>\n'
+            elif line.startswith('#py>'):
+                state = 'pyonlycode'
+                cell_str = '#py>\n'
             elif line.startswith("'''"):
                 state = 'md'
         elif state == 'code':
@@ -36,6 +39,10 @@ with open(args.source, 'r') as f:
                 cells.append(nbf.new_code_cell(cell_str.strip()))
                 state = 'nbonlycode'
                 cell_str = '#nb>\n'
+            elif line.startswith('#py>'):
+                cells.append(nbf.new_code_cell(cell_str.strip()))
+                state = 'pyonlycode'
+                cell_str = '#py>\n'
             elif line.startswith("'''"):
                 cells.append(nbf.new_code_cell(cell_str.strip()))
                 state = 'md'
@@ -58,12 +65,35 @@ with open(args.source, 'r') as f:
                 cells.append(nbf.new_code_cell(cell_str.strip()))
                 state = 'nbonlycode'
                 cell_str = '#nb>\n'
+            elif line.startswith('#py>'):
+                cells.append(nbf.new_code_cell(cell_str.strip()))
+                state = 'pyonlycode'
+                cell_str = '#py>\n'
             elif line.startswith("'''"):
                 cells.append(nbf.new_code_cell(cell_str.strip()))
                 state = 'md'
                 cell_str = ''
             else:
                 cell_str += line[1:]
+        elif state == 'pyonlycode':
+            if line.startswith('#>'):
+                cells.append(nbf.new_code_cell(cell_str.strip()[:-2]))
+                state = 'code'
+                cell_str = ''
+            elif line.startswith('#nb>'):
+                cells.append(nbf.new_code_cell(cell_str.strip()[:-2]))
+                state = 'nbonlycode'
+                cell_str = '#nb>\n'
+            elif line.startswith('#py>'):
+                cells.append(nbf.new_code_cell(cell_str.strip()[:-2]))
+                state = 'pyonlycode'
+                cell_str = '#py>\n'
+            elif line.startswith("'''"):
+                cells.append(nbf.new_code_cell(cell_str.strip()[:-2]))
+                state = 'md'
+                cell_str = ''
+            else:
+                cell_str += '#' + line
 
         else:
             print('BAD STATE')
