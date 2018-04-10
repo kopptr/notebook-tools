@@ -14,18 +14,23 @@ if args.target == '':
 with open(args.source, 'r') as f:
     nb = nbformat.read(f, 4)
 
+first = True
 with open(args.target, 'w') as f:
     for cell in nb['cells']:
+        if first:
+            first = False
+        else:
+            f.write('\n')
         if cell['cell_type'] == 'markdown':
             f.write("'''\n")
             f.write(''.join(cell['source']))
-            f.write("\n'''\n\n")
+            f.write("\n'''\n")
         elif cell['cell_type'] == 'code':
             if cell['source'].startswith('#nb>'):
-                f.write(cell['source'].replace('\n', '\n#') + '\n\n')
+                f.write(cell['source'].replace('\n', '\n#') + '\n')
             elif cell['source'].startswith('#py>'):
-                f.write('#py>\n' + '\n'.join([x[1:] for x in cell['source'].split('\n')[1:]]) + '\n\n')
+                f.write('#py>\n' + '\n'.join([x[1:] for x in cell['source'].split('\n')[1:]]) + '\n')
             else:
                 f.write('#>\n')
-                f.write(''.join(cell['source']) + '\n\n')
+                f.write(''.join(cell['source']) + '\n')
 

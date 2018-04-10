@@ -37,4 +37,3 @@ print('Does not get printed in the notebook')
 
 #>
 print('bar')
-
