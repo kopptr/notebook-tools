@@ -1,16 +1,21 @@
-
+import argparse
 import nbformat
 import nbformat.v4 as nbf
 
 import sys
 
-pyfile = sys.argv[1]
+parser = argparse.ArgumentParser()
+parser.add_argument('source')
+parser.add_argument('target', nargs='?', default='')
+args = parser.parse_args()
+if args.target == '':
+    args.target = args.source.replace('.py', '.ipynb')
 
 state = 'between'
 
 cells = []
 
-with open(pyfile, 'r') as f:
+with open(args.source, 'r') as f:
     lines = f.readlines()
     cell_str = ''
     for line in lines:
@@ -69,5 +74,5 @@ with open(pyfile, 'r') as f:
 
 nb = nbf.new_notebook()
 nb['cells'] = cells
-with open('generated_notebook.ipynb', 'w') as f:
+with open(args.target, 'w') as f:
     nbformat.write(nb, f)
