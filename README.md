@@ -74,3 +74,8 @@ print('This only executes when run as a script')
 
 The tool inserts blank lines between each cell in script format. It is
 recommended to follow this convention as well.
+
+Examples
+--------
+Examples of corresponding script/notebook pairs can be found in the
+test/fixtures directory.
