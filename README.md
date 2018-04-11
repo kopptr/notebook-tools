@@ -69,7 +69,7 @@ notebook, and strip it out when converting in the other direction.
 
 ```python
 #py>
-# print('This only executes when run as a script')
+print('This only executes when run as a script')
 ```
 
 The tool inserts blank lines between each cell in script format. It is
