@@ -24,7 +24,7 @@ and one optional argument, a path to which to write the converted script or
 notebook. If no target is given, the script will write a script or notebook
 with the same name as the source, with the file extension changed.
 
-```bash
+```console
 # Generates foo/bar.ipynb
 $ to-notebook foo/bar.py
 
@@ -32,7 +32,7 @@ $ to-notebook foo/bar.py
 $ to-notebook foo.py bar.ipynb
 ```
 
-```bash
+```console
 # Generates foo/bar.py
 $ to-script foo/bar.ipynb
 
