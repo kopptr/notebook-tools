@@ -38,7 +38,7 @@ multi-line string literal:
 # Markdown Cells
 Markdown cells are delimited by multiline strings. The triple-quotes must appear
 as the first characters on a line (no leading whitespace), and must be on their
-own line (no markdown on the same line.
+own line (no markdown on the same line as a triple-quote).
 '''
 ```
 
